@@ -1,0 +1,57 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .pokemon-box {
+    width: 80vw;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 70%;
+
+      .top{
+        display: flex;
+        flex-direction: row;
+      }
+
+      .bottom {
+        display: flex;
+        flex-direction: row;
+
+        .type {
+          border: 1px solid red;
+          border-radius: 30px;
+          background: lightgray;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+        }
+      }
+    }
+
+    .right {
+      width: 30%;
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+      align-items: center;
+
+      .start {
+        width: 32px;
+        height: 32px;
+      }
+
+      .pokeimg{
+        border: 1px solid black;
+        margin: 1rem;
+      }
+    }
+  }
+}
