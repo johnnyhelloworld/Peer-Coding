@@ -16,9 +16,17 @@
       justify-content: center;
       width: 70%;
 
-      .top{
+      .top {
         display: flex;
         flex-direction: row;
+        align-items: center;
+
+        h1,
+        span {
+          font-size:3rem;
+          font-weight: bold;
+          text-transform: capitalize;
+        }
       }
 
       .bottom {
@@ -48,7 +56,7 @@
         height: 32px;
       }
 
-      .pokeimg{
+      .pokeimg {
         border: 1px solid black;
         margin: 1rem;
       }
