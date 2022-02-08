@@ -12,7 +12,7 @@ export interface Pokemon {
 })
 export class PokemonListComponent implements OnInit {
 
-  pokemons: Pokemon[] = [];
+  pokemons: any[] = [];
 
   constructor(
     private PokemonApiService: PokemonApiService
@@ -23,8 +23,8 @@ export class PokemonListComponent implements OnInit {
       .subscribe(reponse => {
         reponse.results.forEach((result: Pokemon) => {
           this.PokemonApiService.GetPokemonByName(result.name)
-            .subscribe((pokemon: any) => {
-              this.pokemons.push(pokemon);
+            .subscribe((uniqResponse: any) => {
+              this.pokemons.push(uniqResponse);
             });
         })
       });

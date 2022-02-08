@@ -7,6 +7,7 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonItemComponent } from './pokemon-item/pokemon-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { Observable } from 'rxjs';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

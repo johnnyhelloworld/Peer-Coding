@@ -1,1 +1,8 @@
-<p>pokemon-list works!</p>
+<div class="box" *ngFor="let pokemon of pokemons">
+  <div class="pokemon-box">
+    <img [src]="pokemon.sprites.front_default">
+    <h1>{{ pokemon.name}}</h1>
+  </div>
+</div>
+
+
