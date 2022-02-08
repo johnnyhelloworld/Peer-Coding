@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { PokemonApiService } from '../pokemon-api.service';
 export interface Pokemon {
   name: string;
   url: string;
@@ -12,11 +12,25 @@ export interface Pokemon {
 })
 export class PokemonListComponent implements OnInit {
 
-  constructor() { }
+  pokemons: Pokemon[] = [];
+
+  constructor(
+    private PokemonApiService: PokemonApiService
+  ) { }
 
   ngOnInit(): void {
+    this.PokemonApiService.GetPokemon(10)
+      .subscribe(reponse => {
+        reponse.results.forEach((result: Pokemon) => {
+          this.PokemonApiService.GetPokemonByName(result.name)
+            .subscribe((pokemon: any) => {
+              this.pokemons.push(pokemon);
+            });
+        })
+      });
+    console.log(this.pokemons);
   }
 
-  
 
 }
+

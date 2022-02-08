@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonItemComponent } from './pokemon-item/pokemon-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @NgModule({
   declarations: [
