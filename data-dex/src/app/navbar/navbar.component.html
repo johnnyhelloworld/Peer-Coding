@@ -15,4 +15,10 @@
   </div>
 </nav>
 
+<label for="filter">Filtrer par:</label>
+<select name="filtre" id="filtre">
+  <option value="">--Type--</option>
+  <option value="type" *ngFor="let type of types">{{type}}</option>
+</select>
+
 <router-outlet></router-outlet>

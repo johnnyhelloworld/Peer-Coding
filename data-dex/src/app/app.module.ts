@@ -17,7 +17,7 @@ import { MyPokemonComponent } from './my-pokemon/my-pokemon.component';
     PokemonListComponent,
     PokemonItemComponent,
     NavbarComponent,
-    MyPokemonComponent
+    MyPokemonComponent,
   ],
   imports: [
     BrowserModule,
