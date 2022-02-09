@@ -10,6 +10,7 @@
 
 <div class="box" *ngFor="let pokemon of pokemons">
   <div class="pokemon-box">
+
     <div class="left">
 
       <div class="top">
@@ -35,5 +36,6 @@
 
   </div>
 </div>
-<button (click)="loadMore()">Load More</button>
-
+<div class="load-more">
+  <button (click)="loadMore()" class="btn btn-outline-primary">Load More</button>
+</div>

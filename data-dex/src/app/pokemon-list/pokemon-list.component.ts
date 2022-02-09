@@ -50,8 +50,14 @@ export class PokemonListComponent implements OnInit {
   }
 
   loadMore() {
-    this.PokemonApiService.GetPokemonNext(this.loadMoreUrl)
-      .subscribe((reponse: any) => {
+
+    let pokemon = this.PokemonApiService.GetPokemonNext(this.loadMoreUrl);
+
+    pokemon.subscribe((reponse: any) => {
+      this.loadMoreUrl = reponse.next     //get the url for next API call
+    })
+
+    pokemon.subscribe((reponse: any) => {
         reponse.results.forEach((result: Pokemon) => {
           this.PokemonApiService.GetPokemonByName(result.name)
             .subscribe((uniqResponse: any) => {
