@@ -47,8 +47,6 @@ export class PokemonListComponent implements OnInit {
           this.types.push(result.name)
         })
       })
-
-    console.log(this.types);
   }
 
   loadMore() {
