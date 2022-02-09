@@ -64,7 +64,13 @@ export class PokemonListComponent implements OnInit {
   }
 
   onChange($event: any){
-    console.log($event)
+    console.log($event.target.value)
+    this.PokemonApiService.GetPokemonByType($event.target.value)
+    .subscribe((reponse: any) => {
+      reponse.pokemon.forEach((uniqPokemon: any) => {
+
+      });
+    });
   }
 }
 

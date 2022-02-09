@@ -31,7 +31,7 @@ export class PokemonApiService {
     return this.http.get('https://pokeapi.co/api/v2/type/');
   }
 
-  GetPokemonTypeName(name: string): Observable<any> {
+  GetPokemonByType(name: string): Observable<any> {
     return this.http.get(`https://pokeapi.co/api/v2/type/${name}`);
   }
 }
