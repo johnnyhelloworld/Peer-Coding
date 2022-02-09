@@ -22,7 +22,7 @@
 
       <div class="bottom">
 
-        <span class="type" *ngFor="let type of pokemon.types" class="badge rounded-pill p-2 mx-1 pokemon-background-type pokemon-background-type-{{type.type.name}}">{{ type.type.name }} </span>
+        <span class="type" *ngFor="let type of pokemon.types" class="badge rounded-pill p-2 mx-1 pokemon-background-type pokemon-background-type-{{type.type.name}}">{{ type.type.name | titlecase }}   </span>
 
       </div>
 
