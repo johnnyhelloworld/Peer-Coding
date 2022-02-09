@@ -65,17 +65,20 @@ export class PokemonListComponent implements OnInit {
 
   onChange($event: any) {
     this.pokemons = [];
-    this.PokemonApiService.GetPokemonByType($event.target.value)
-      .subscribe((reponse: any) => {
-        reponse.pokemon.forEach((uniqPokemon: any) => {
-          this.PokemonApiService.GetPokemonByName(uniqPokemon.pokemon.name)
-            .subscribe((uniqResponse: any) => {
-              if (uniqResponse.id <= 151) {
-                this.pokemons.push(uniqResponse);                    //get value to display pokemon
-              }
-            });
+    if ($event.target.value === "All Types") {
+      this.ngOnInit();
+    } else {
+      this.PokemonApiService.GetPokemonByType($event.target.value)
+        .subscribe((reponse: any) => {
+          reponse.pokemon.forEach((uniqPokemon: any) => {
+            this.PokemonApiService.GetPokemonByName(uniqPokemon.pokemon.name)
+              .subscribe((uniqResponse: any) => {
+                if (uniqResponse.id <= 151) {
+                  this.pokemons.push(uniqResponse);
+                }
+              });
+          })
         })
-      })
+    }
   }
 }
-

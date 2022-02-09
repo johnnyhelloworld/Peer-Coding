@@ -2,7 +2,7 @@
   <div class="mb-3">
     <label for="pokemonTypeFilterSelect" class="form-label">Filtrer par type :</label>
     <select class="form-control" id="pokemonTypeFilterSelect" (change)="onChange($event)">
-      <option selected disabled value="">Select a type</option>
+      <option selected value="All Types">All types</option>
       <option *ngFor="let type of types">{{ type }}</option>
     </select>
   </div>
