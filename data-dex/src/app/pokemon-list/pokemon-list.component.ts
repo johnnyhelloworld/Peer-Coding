@@ -5,6 +5,11 @@ export interface Pokemon {
   url: string;
 }
 
+export interface Type {
+  name: string;
+  url: string;
+}
+
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
@@ -14,6 +19,7 @@ export class PokemonListComponent implements OnInit {
 
   pokemons: any[] = [];
   loadMoreUrl!: string;
+  types: any[] = [];
 
   constructor(
     private PokemonApiService: PokemonApiService
@@ -34,6 +40,15 @@ export class PokemonListComponent implements OnInit {
             });
         })
       });
+
+    this.PokemonApiService.GetPokemonType()
+    .subscribe((reponse: any) => {
+      reponse.results.forEach((result: Type) =>
+      {
+        this.types.push(result.name)
+      })})
+
+      console.log(this.types);
   }
 
   loadMore(){
@@ -48,6 +63,8 @@ export class PokemonListComponent implements OnInit {
     });
   }
 
-
+  onChange($event: any){
+    console.log($event)
+  }
 }
 

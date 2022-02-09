@@ -1,3 +1,13 @@
+<div class="p-3">
+  <div class="mb-3">
+    <label for="pokemonTypeFilterSelect" class="form-label">Filtrer par type :</label>
+    <select class="form-control" id="pokemonTypeFilterSelect" (change)="onChange($event)">
+      <option selected value="">Select a type</option>
+      <option *ngFor="let type of types">{{ type }}</option>
+    </select>
+  </div>
+</div>
+
 <div class="box" *ngFor="let pokemon of pokemons">
   <div class="pokemon-box">
     <div class="left">
@@ -11,7 +21,7 @@
 
       <div class="bottom">
 
-        <span class="type" *ngFor="let type of pokemon.types">{{ type.type.name }} </span>
+        <span class="type" *ngFor="let type of pokemon.types" class="badge rounded-pill p-2 mx-1 pokemon-background-type pokemon-background-type-{{type.type.name}}">{{ type.type.name }} </span>
 
       </div>
 
