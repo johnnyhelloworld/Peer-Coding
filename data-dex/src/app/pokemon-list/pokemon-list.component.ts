@@ -33,27 +33,6 @@ export class PokemonListComponent implements OnInit {
     })
 
     pokemon.subscribe(reponse => {
-        reponse.results.forEach((result: Pokemon) => {
-          this.PokemonApiService.GetPokemonByName(result.name)
-            .subscribe((uniqResponse: any) => {
-              this.pokemons.push(uniqResponse);                     //get value to display pokemon
-            });
-        })
-      });
-
-    this.PokemonApiService.GetPokemonType()
-    .subscribe((reponse: any) => {
-      reponse.results.forEach((result: Type) =>
-      {
-        this.types.push(result.name)
-      })})
-
-      console.log(this.types);
-  }
-
-  loadMore(){
-    this.PokemonApiService.GetPokemonNext(this.loadMoreUrl)
-    .subscribe((reponse: any) => {
       reponse.results.forEach((result: Pokemon) => {
         this.PokemonApiService.GetPokemonByName(result.name)
           .subscribe((uniqResponse: any) => {
@@ -61,16 +40,42 @@ export class PokemonListComponent implements OnInit {
           });
       })
     });
+
+    this.PokemonApiService.GetPokemonType()
+      .subscribe((reponse: any) => {
+        reponse.results.forEach((result: Type) => {
+          this.types.push(result.name)
+        })
+      })
+
+    console.log(this.types);
   }
 
-  onChange($event: any){
-    console.log($event.target.value)
-    this.PokemonApiService.GetPokemonByType($event.target.value)
-    .subscribe((reponse: any) => {
-      reponse.pokemon.forEach((uniqPokemon: any) => {
-
+  loadMore() {
+    this.PokemonApiService.GetPokemonNext(this.loadMoreUrl)
+      .subscribe((reponse: any) => {
+        reponse.results.forEach((result: Pokemon) => {
+          this.PokemonApiService.GetPokemonByName(result.name)
+            .subscribe((uniqResponse: any) => {
+              this.pokemons.push(uniqResponse);                     //get value to display pokemon
+            });
+        })
       });
-    });
+  }
+
+  onChange($event: any) {
+    this.pokemons = [];
+    this.PokemonApiService.GetPokemonByType($event.target.value)
+      .subscribe((reponse: any) => {
+        reponse.pokemon.forEach((uniqPokemon: any) => {
+          this.PokemonApiService.GetPokemonByName(uniqPokemon.pokemon.name)
+            .subscribe((uniqResponse: any) => {
+              if (uniqResponse.id <= 151) {
+                this.pokemons.push(uniqResponse);                    //get value to display pokemon
+              }
+            });
+        })
+      })
   }
 }
 
